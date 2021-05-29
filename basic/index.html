@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="sa">同步</button>
+    <button id="nsa">非同步</button>
+    <button id="count">計數器</button>
+    <div id="message"></div>
+    <div id="countBox">0</div>
+    <script>
+        let sa = document.getElementById("sa");
+        let nsa = document.getElementById("nsa");
+        let count = document.getElementById("count");
+        let message = document.getElementById("message");
+        let countBox = document.getElementById("countBox");
+        
+        count.addEventListener("click", function(){
+            countBox.innerText = parseInt(countBox.innerText, 10) +1;
+            
+        })
+
+        nsa.addEventListener("click", function(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://34.217.120.25:3000",true);
+
+            xhr.onload = function(){
+                message.innerText = `非同步請求 load `
+            };
+            xhr.send();
+        })
+        sa.addEventListener("click", function(){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://34.217.120.25:3000",false);
+
+            xhr.onload = function(){
+                message.innerText = `同步請求 load `
+            };
+            xhr.send();
+        })
+
+    </script>
+</body>
+</html>
