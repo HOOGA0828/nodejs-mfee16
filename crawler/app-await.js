@@ -26,9 +26,9 @@ async function awaitResponse(){
       },
     }
     );
-    if (response.data.stat === "OK") {
-        console.log("選擇日期:", response.data.date);
-        console.log(response.data.title);
+    if (axiosRop.data.stat === "OK") {
+        console.log("選擇日期:", axiosRop.data.date);
+        console.log(axiosRop.data.title);
       }
     } catch(err) {
         console.error(err);
