@@ -1,5 +1,7 @@
 stock.txt
 
+.env
+
 # Logs
 logs
 *.log
