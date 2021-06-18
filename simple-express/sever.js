@@ -6,6 +6,13 @@ let app = express();
 
 app.use(express.static("public"));
 
+
+// 第一個是變數
+// 第二個是檔案名稱
+app.set("views", "views");
+// 告訴 express 我們用的是 view engine 是 pug
+app.set("view engine", "pug");
+
 app.use(function (req, res, next){
     let current = new Date();
     console.log(`有人訪問 在${current}`);
@@ -17,10 +24,10 @@ app.use(function (req, res, next){
 
 
 app.get("/", function(req,res){
-    res.send("hello express")
+    res.render("index")
 });
 app.get("/about", function(req,res){
-    res.send("這是about")
+    res.render("about")
 });
 
 app.listen(3000, () =>{
