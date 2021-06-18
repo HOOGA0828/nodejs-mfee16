@@ -3,6 +3,9 @@ const express = require("express");
 let app = express();
 
 //中間件
+
+app.use(express.static("public"));
+
 app.use(function (req, res, next){
     let current = new Date();
     console.log(`有人訪問 在${current}`);
@@ -11,6 +14,8 @@ app.use(function (req, res, next){
 })
 
 // 路由
+
+
 app.get("/", function(req,res){
     res.send("hello express")
 });
