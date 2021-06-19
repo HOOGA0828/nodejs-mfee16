@@ -21,6 +21,11 @@ app.use(function (req, res, next) {
   next();
 });
 
+// stock 相關路由
+let stockRouter = require("./routes/stock")
+// 第一個參數為路徑  
+app.use("/stock", stockRouter);
+
 // 路由
 
 app.get("/", function (req, res) {
@@ -29,19 +34,19 @@ app.get("/", function (req, res) {
 app.get("/about", function (req, res) {
   res.render("about");
 });
-app.get("/stock", async (req, res) => {
-  let queryResults = await connection.queryAsync("SELECT * FROM stock");
-//   console.log(stocks);
-  res.render("stock/list", {
-      stocks: queryResults
-  });
-});
-app.get("/stock/:stockId", async (req,res) =>{
-  let queryResults = await connection.queryAsync("SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date", req.params.stockId);
-  res.render("stock/detail", {
-    stockPrices: queryResults
-});
-})
+// app.get("/stock", async (req, res) => {
+//   let queryResults = await connection.queryAsync("SELECT * FROM stock");
+// //   console.log(stocks);
+//   res.render("stock/list", {
+//       stocks: queryResults
+//   });
+// });
+// app.get("/stock/:stockId", async (req,res) =>{
+//   let queryResults = await connection.queryAsync("SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date", req.params.stockId);
+//   res.render("stock/detail", {
+//     stockPrices: queryResults
+// });
+// })
 
 app.listen(3000, async () => {
   await connection.connectAsync();
