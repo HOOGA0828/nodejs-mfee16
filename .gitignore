@@ -1,6 +1,7 @@
 stock.txt
 
 .env
+!uploads
 
 # Logs
 logs

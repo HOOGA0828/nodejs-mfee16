@@ -1,2 +1,17 @@
-header
-    #title 逆時鐘 順時鐘
+head
+ul
+    li
+        a(href="/") 首頁
+    li 
+        a(href="/stock") 股票資料
+    if member
+        li 
+            a(href="/member") 會員中心    
+        li
+            a(href="/auth/logout") 登出   
+
+    else        
+        li
+            a(href="/auth/login") 登入
+        li
+            a(href="/auth/register") 註冊

@@ -4,7 +4,24 @@ html
         title MFEE16 Express 練習
         meta(charset="utf-8")
         link(rel='stylesheet', href='../../styles/main.css')
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        //- 如果 locals 中有 才需要引用
+        if message
+            script(src="//cdn.jsdelivr.net/npm/sweetalert2@11")
+
+        block scripts
+
     body 
         include header 
-        block content 
+        #content
+            block content 
         include footer
+
+    if message
+        script.
+            Swal.fire({
+                title: "#{message.title}",
+                text: "#{message.text}"
+
+            })

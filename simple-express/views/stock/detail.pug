@@ -1,7 +1,7 @@
 extends ../_layouts/master
 
 block content 
-    h1 這是股票細節頁
+    h1 #{queryResultsStocks.stock_name} 的股票資料
 
     table 
         tr 
@@ -17,3 +17,8 @@ block content
                 td #{price.high_price}
                 td #{price.low_price}
                 td #{price.close_price}
+    .pagination
+        - for(var p = 1 ; p <= pagination.lastPage ; p++)
+            a(href=`/stock/${queryResultsStocks.stock_id}?page=${p}`, class=p==pagination.currentPage?"active":"") #{p}
+    .back
+        a(href='/stock') #{"返回列表"}
